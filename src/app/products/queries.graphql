@@ -2,6 +2,12 @@ query GetProducts {
   getLandingProducts {
     products {
       id
+      title
+      price
+      images {
+        public_id
+        secure_url
+      }
     }
   }
 }
