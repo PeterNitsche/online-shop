@@ -1,7 +1,7 @@
 query GetProducts {
   getLandingProducts {
     products {
-      title
+      id
     }
   }
 }

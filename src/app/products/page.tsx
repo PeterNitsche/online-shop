@@ -7,7 +7,7 @@ export default async function Products() {
   return (
     <ul>
       {data.getLandingProducts.products?.map((product) => (
-        <li key={product.title}>{product.title}</li>
+        <li key={product.id}>{product.id}</li>
       ))}
     </ul>
   );
