@@ -2,8 +2,10 @@ query GetProducts {
   getLandingProducts {
     products {
       id
+      slug
       title
       price
+      averageRating
       images {
         public_id
         secure_url
