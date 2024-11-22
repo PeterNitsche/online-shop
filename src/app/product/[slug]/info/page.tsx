@@ -1,8 +1,5 @@
-import {
-  GetProductDocument,
-  GetProductSlugsDocument,
-} from "@/__generated__/graphql";
-import { getClient } from "@/lib/client";
+import { GetProductDocument, GetProductSlugsDocument } from '@/__generated__/graphql';
+import { getClient } from '@/lib/client';
 
 interface ProductProps {
   params: Promise<{ slug: string }>;
@@ -14,7 +11,8 @@ export default async function Product({ params }: ProductProps) {
     query: GetProductDocument,
     variables: { slug },
   });
-  return <>{data.getProductBySlug.price}</>;
+
+  return <></>;
 }
 
 export async function generateStaticParams() {

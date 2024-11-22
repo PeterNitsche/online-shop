@@ -1,18 +1,11 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
 
-import { GetProductsDocument, GetProductsQuery } from "@/__generated__/graphql";
-import { getClient } from "@/lib/client";
+import { GetProductsDocument, GetProductsQuery } from '@/__generated__/graphql';
+import { getClient } from '@/lib/client';
 import {
-  Box,
-  Card,
-  CardActionArea,
-  CardContent,
-  Grid2 as Grid,
-  Rating,
-  Stack,
-  Typography,
-} from "@mui/material";
+    Box, Card, CardActionArea, CardContent, Grid2 as Grid, Rating, Stack, Typography
+} from '@mui/material';
 
 type Products = NonNullable<GetProductsQuery["getLandingProducts"]["products"]>;
 type Product = Products[0];
@@ -25,7 +18,7 @@ function ProductComponent({ product }: ProductComponentProps) {
     <Grid size={2}>
       <Card variant="outlined">
         <CardActionArea>
-          <Link href={`product/${product.slug}`}>
+          <Link href={`product/${product.slug}/info`}>
             <CardContent>
               <Stack>
                 <Box height={150} width={150} position="relative">
