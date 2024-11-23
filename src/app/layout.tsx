@@ -31,7 +31,7 @@ export default function RootLayout({
       <body className={`${roboto.variable}`}>
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
-            <Container maxWidth="md">{children}</Container>
+            <Container maxWidth="lg">{children}</Container>
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
