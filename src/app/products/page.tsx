@@ -25,7 +25,7 @@ function ProductComponent({ product }: ProductComponentProps) {
     <Grid size={2}>
       <Card variant="outlined">
         <CardActionArea>
-          <Link href={`product/${product.slug}/info`}>
+          <Link href={`product/${product.slug}`}>
             <CardContent>
               <Stack>
                 <Box height={150} width={150} position="relative">
