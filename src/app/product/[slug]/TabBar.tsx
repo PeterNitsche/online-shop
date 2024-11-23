@@ -1,29 +1,45 @@
 "use client";
-import { useParams, usePathname, useRouter } from 'next/navigation';
 
-import { Box, Tab, Tabs } from '@mui/material';
+import { useState } from "react";
 
-export default function TabBar() {
-  const router = useRouter();
-  const selectedPath = usePathname();
-  const { slug } = useParams();
+import { Box, Tab, Tabs } from "@mui/material";
 
-  const paths = [`/product/${slug}/info`, `/product/${slug}/review`];
+const tabItems = ["Description", "Reviews"] as const;
+type TabItemsType = (typeof tabItems)[number];
 
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-    router.push(newValue);
+interface TabBarProps {
+  reviewsComponent: React.ReactNode;
+  descriptionComponent: React.ReactNode;
+}
+
+export default function TabBar({
+  reviewsComponent,
+  descriptionComponent,
+}: TabBarProps) {
+  const [value, setValue] = useState<TabItemsType>("Description");
+
+  const handleChange = (
+    event: React.SyntheticEvent,
+    newValue: TabItemsType
+  ) => {
+    setValue(newValue);
   };
 
   return (
-    <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-      <Tabs
-        value={selectedPath}
-        onChange={handleChange}
-        aria-label="Product Detail Navigation"
-      >
-        <Tab value={paths[0]} label="Info" />
-        <Tab value={paths[1]} label="Reviews" />
-      </Tabs>
-    </Box>
+    <>
+      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          aria-label="Product Detail Navigation"
+        >
+          {tabItems.map((tabItem) => (
+            <Tab key={tabItem} value={tabItem} label={tabItem} />
+          ))}
+        </Tabs>
+      </Box>
+      {value === "Description" && descriptionComponent}
+      {value === "Reviews" && reviewsComponent}
+    </>
   );
 }

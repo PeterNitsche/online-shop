@@ -6,10 +6,10 @@ import { getClient } from "@/lib/client";
 import CancelTwoToneIcon from "@mui/icons-material/CancelTwoTone";
 import CheckCircleTwoToneIcon from "@mui/icons-material/CheckCircleTwoTone";
 import SellTwoToneIcon from "@mui/icons-material/SellTwoTone";
-import { Box, Grid2 as Grid, Stack, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 
 import { ImageCarousel } from "./ImageCarousel";
-import styles from "./page.module.css";
+import TabBar from "./TabBar";
 
 interface ProductProps {
   params: Promise<{ slug: string }>;
@@ -54,6 +54,10 @@ export default async function Product({ params }: ProductProps) {
           <Typography variant="subtitle2">Out of stock!</Typography>
         </Stack>
       )}
+      <TabBar
+        descriptionComponent={<Typography>Test</Typography>}
+        reviewsComponent={<Typography>Test2</Typography>}
+      />
     </>
   );
 }
