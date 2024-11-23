@@ -21,3 +21,17 @@ query GetProduct($slug: String!) {
     description
   }
 }
+query GetProductReviews($productId: String!, $cursor: String) {
+  getProductReviews(cursor: $cursor, productId: $productId) {
+    reviewList {
+      id
+      rating
+      review
+      createdAt
+      rating
+      user {
+        displayName
+      }
+    }
+  }
+}

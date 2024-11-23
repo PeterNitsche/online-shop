@@ -9,6 +9,7 @@ import SellTwoToneIcon from "@mui/icons-material/SellTwoTone";
 import { Stack, Typography } from "@mui/material";
 
 import { ImageCarousel } from "./ImageCarousel";
+import Reviews from "./Reviews";
 import TabBar from "./TabBar";
 
 interface ProductProps {
@@ -56,7 +57,7 @@ export default async function Product({ params }: ProductProps) {
       )}
       <TabBar
         descriptionComponent={<Typography>{product.description}</Typography>}
-        reviewsComponent={<Typography>Test2</Typography>}
+        reviewsComponent={<Reviews productId={product.id!} />}
       />
     </>
   );
