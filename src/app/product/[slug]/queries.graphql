@@ -5,3 +5,16 @@ query GetProductSlugs {
     }
   }
 }
+
+query GetProduct($slug: String!) {
+  getProductBySlug(slug: $slug) {
+    id
+    title
+    price
+    averageRating
+    images {
+      public_id
+      secure_url
+    }
+  }
+}
