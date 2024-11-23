@@ -41,7 +41,7 @@ function ProductComponent({ product }: ProductComponentProps) {
                 </Typography>
 
                 <Typography variant="subtitle2" gutterBottom noWrap>
-                  {`${product.price[0]} €`}
+                  {`${product.price[0]} ${product.currency}`}
                 </Typography>
 
                 <Rating

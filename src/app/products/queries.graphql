@@ -5,6 +5,7 @@ query GetProducts {
       slug
       title
       price
+      currency
       averageRating
       images {
         public_id
