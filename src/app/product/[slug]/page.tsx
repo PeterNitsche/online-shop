@@ -55,7 +55,7 @@ export default async function Product({ params }: ProductProps) {
         </Stack>
       )}
       <TabBar
-        descriptionComponent={<Typography>Test</Typography>}
+        descriptionComponent={<Typography>{product.description}</Typography>}
         reviewsComponent={<Typography>Test2</Typography>}
       />
     </>

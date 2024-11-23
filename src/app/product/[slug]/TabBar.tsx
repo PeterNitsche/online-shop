@@ -27,7 +27,9 @@ export default function TabBar({
 
   return (
     <>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+      <Box
+        sx={{ borderBottom: 1, borderColor: "divider", marginBottom: "5px" }}
+      >
         <Tabs
           value={value}
           onChange={handleChange}
