@@ -24,6 +24,8 @@ query GetProduct($slug: String!) {
 query GetProductReviews($productId: String!, $cursor: String) {
   getProductReviews(cursor: $cursor, productId: $productId) {
     pageInfo {
+      endCursor
+      hasNextPage
       avgRating
       totalReviews
     }
