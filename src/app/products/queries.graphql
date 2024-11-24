@@ -1,16 +1,26 @@
 query GetProducts {
   getLandingProducts {
     products {
-      id
-      slug
-      title
-      price
-      currency
-      averageRating
-      images {
-        public_id
-        secure_url
-      }
+      ...ProductListItem
     }
+  }
+}
+
+query GetSearchProducts($term: String!) {
+  searchHomeProducts(search: $term) {
+    ...ProductListItem
+  }
+}
+
+fragment ProductListItem on Product {
+  id
+  slug
+  title
+  price
+  currency
+  averageRating
+  images {
+    public_id
+    secure_url
   }
 }

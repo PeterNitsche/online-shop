@@ -15,7 +15,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  */
 const documents = {
     "query GetProductSlugs {\n  getLandingProducts {\n    products {\n      slug\n    }\n  }\n}\n\nquery GetProduct($slug: String!) {\n  getProductBySlug(slug: $slug) {\n    id\n    title\n    price\n    currency\n    brand\n    inStock\n    images {\n      public_id\n      secure_url\n    }\n    description\n  }\n}\n\nquery GetProductReviews($productId: String!, $cursor: String) {\n  getProductReviews(cursor: $cursor, productId: $productId) {\n    pageInfo {\n      endCursor\n      hasNextPage\n      avgRating\n      totalReviews\n    }\n    reviewList {\n      id\n      rating\n      review\n      createdAt\n      rating\n      user {\n        displayName\n      }\n    }\n  }\n}": types.GetProductSlugsDocument,
-    "query GetProducts {\n  getLandingProducts {\n    products {\n      id\n      slug\n      title\n      price\n      currency\n      averageRating\n      images {\n        public_id\n        secure_url\n      }\n    }\n  }\n}": types.GetProductsDocument,
+    "query GetProducts {\n  getLandingProducts {\n    products {\n      ...ProductListItem\n    }\n  }\n}\n\nquery GetSearchProducts($term: String!) {\n  searchHomeProducts(search: $term) {\n    ...ProductListItem\n  }\n}\n\nfragment ProductListItem on Product {\n  id\n  slug\n  title\n  price\n  currency\n  averageRating\n  images {\n    public_id\n    secure_url\n  }\n}": types.GetProductsDocument,
 };
 
 /**
@@ -39,7 +39,7 @@ export function gql(source: "query GetProductSlugs {\n  getLandingProducts {\n  
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "query GetProducts {\n  getLandingProducts {\n    products {\n      id\n      slug\n      title\n      price\n      currency\n      averageRating\n      images {\n        public_id\n        secure_url\n      }\n    }\n  }\n}"): (typeof documents)["query GetProducts {\n  getLandingProducts {\n    products {\n      id\n      slug\n      title\n      price\n      currency\n      averageRating\n      images {\n        public_id\n        secure_url\n      }\n    }\n  }\n}"];
+export function gql(source: "query GetProducts {\n  getLandingProducts {\n    products {\n      ...ProductListItem\n    }\n  }\n}\n\nquery GetSearchProducts($term: String!) {\n  searchHomeProducts(search: $term) {\n    ...ProductListItem\n  }\n}\n\nfragment ProductListItem on Product {\n  id\n  slug\n  title\n  price\n  currency\n  averageRating\n  images {\n    public_id\n    secure_url\n  }\n}"): (typeof documents)["query GetProducts {\n  getLandingProducts {\n    products {\n      ...ProductListItem\n    }\n  }\n}\n\nquery GetSearchProducts($term: String!) {\n  searchHomeProducts(search: $term) {\n    ...ProductListItem\n  }\n}\n\nfragment ProductListItem on Product {\n  id\n  slug\n  title\n  price\n  currency\n  averageRating\n  images {\n    public_id\n    secure_url\n  }\n}"];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};

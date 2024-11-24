@@ -1,4 +1,4 @@
-import { CodegenConfig } from "@graphql-codegen/cli";
+import { CodegenConfig } from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
   schema: "https://api-dev.shopi.co.ke/graphql",
@@ -8,6 +8,7 @@ const config: CodegenConfig = {
       preset: "client",
       presetConfig: {
         gqlTagName: "gql",
+        fragmentMasking: { unmaskFunctionName: "getFragmentData" },
       },
     },
   },

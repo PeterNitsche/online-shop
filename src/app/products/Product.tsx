@@ -1,15 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { GetProductsQuery } from '@/__generated__/graphql';
+import { ProductListItemFragment } from '@/__generated__/graphql';
 import {
     Box, Card, CardActionArea, CardContent, Grid2 as Grid, Rating, Stack, Typography
 } from '@mui/material';
 
-type Products = NonNullable<GetProductsQuery["getLandingProducts"]["products"]>;
-type Product = Products[0];
 interface ProductProps {
-  product: Product;
+  product: ProductListItemFragment;
 }
 
 export function Product({ product }: ProductProps) {
