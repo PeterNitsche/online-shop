@@ -24,10 +24,10 @@ interface ReviewProps {
 
 export function Review({ review }: ReviewProps) {
   return (
-    <>
-      <Stack direction={"row"} spacing={1}>
+    <Stack direction="column" spacing={1}>
+      <Stack direction="row" spacing={1}>
         <Avatar>{getInitials(review.user?.displayName)}</Avatar>
-        <Stack direction={"column"}>
+        <Stack direction="column">
           <Typography variant="body2">{`Reviewed by ${review.user?.displayName}`}</Typography>
           <Typography variant="body2">
             {format(parseISO(review.createdAt), "PPPpp")}
@@ -36,6 +36,6 @@ export function Review({ review }: ReviewProps) {
       </Stack>
       <Rating name="product-rating" readOnly value={review.rating} />
       <Typography variant="body1">{review.review}</Typography>
-    </>
+    </Stack>
   );
 }

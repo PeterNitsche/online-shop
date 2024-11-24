@@ -1,9 +1,9 @@
-import { GetProductReviewsDocument } from "@/__generated__/graphql";
-import { getClient } from "@/lib/client";
-import { Divider, Stack, Typography } from "@mui/material";
+import { GetProductReviewsDocument } from '@/__generated__/graphql';
+import { getClient } from '@/lib/client';
+import { Divider, Grid2 as Grid, Stack, Typography } from '@mui/material';
 
-import { Review } from "./Review";
-import { ReviewOverview } from "./ReviewOverview";
+import { Review } from './Review';
+import { ReviewOverview } from './ReviewOverview';
 
 interface ReviewsProps {
   productId?: string;
@@ -27,7 +27,14 @@ export default async function Reviews({ productId }: ReviewsProps) {
         totalReviews={summary.totalReviews}
       />
       <Divider />
-      {...reviews.map((review) => <Review key={review.id} review={review} />)}
+      <Typography variant="h5">All reviews</Typography>
+      <Grid container spacing={4} columns={{ xs: 2, sm: 4, md: 6 }}>
+        {...reviews.map((review) => (
+          <Grid key={review.id}>
+            <Review review={review} />
+          </Grid>
+        ))}
+      </Grid>
     </Stack>
   );
 }
