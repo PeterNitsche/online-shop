@@ -27,7 +27,7 @@ export default async function Products({ searchParams }: ProductsProps) {
           .getLandingProducts.products;
 
   return (
-    <Stack spacing={2} alignItems={"center"}>
+    <Stack spacing={2} alignItems={"center"} paddingTop="10px">
       <SearchInput />
       <Grid container spacing={2} columns={{ xs: 4, sm: 6, md: 8 }}>
         {products?.map((prd) => {
