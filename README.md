@@ -12,6 +12,14 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Testing
+
+To run test automation, please execute:
+
+```bash
+npm run test
+```
+
 ## Generate GraphQL code
 
 To update the type declaration of your GraphQL queries, execute:
