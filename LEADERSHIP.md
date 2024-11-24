@@ -128,7 +128,7 @@ graph LR
     A --> D[Implement product detail page]
     A --> E[Implement authentication]
     C --> F[Implement product search]
-    D --> G[Implement "add review" feature]
+    D --> G[Implement 'add review' feature]
     D --> G[Implement pagination (product + reviews)]
     A --> G
 ```
