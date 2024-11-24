@@ -1,16 +1,13 @@
-import {
-  GetProductDocument,
-  GetProductSlugsDocument,
-} from "@/__generated__/graphql";
-import { getClient } from "@/lib/client";
-import CancelTwoToneIcon from "@mui/icons-material/CancelTwoTone";
-import CheckCircleTwoToneIcon from "@mui/icons-material/CheckCircleTwoTone";
-import SellTwoToneIcon from "@mui/icons-material/SellTwoTone";
-import { Stack, Typography } from "@mui/material";
+import { GetProductDocument, GetProductSlugsDocument } from '@/__generated__/graphql';
+import { getClient } from '@/lib/client';
+import CancelTwoToneIcon from '@mui/icons-material/CancelTwoTone';
+import CheckCircleTwoToneIcon from '@mui/icons-material/CheckCircleTwoTone';
+import SellTwoToneIcon from '@mui/icons-material/SellTwoTone';
+import { Stack, Typography } from '@mui/material';
 
-import { ImageCarousel } from "./ImageCarousel";
-import Reviews from "./Reviews";
-import TabBar from "./TabBar";
+import { ImageCarousel } from './ImageCarousel';
+import Reviews from './Reviews';
+import TabBar from './TabBar';
 
 interface ProductProps {
   params: Promise<{ slug: string }>;
@@ -68,7 +65,9 @@ export async function generateStaticParams() {
     query: GetProductSlugsDocument,
   });
 
-  return data.getLandingProducts.products?.map((product) => ({
+  const slugs = data.getLandingProducts.products?.map((product) => ({
     slug: product.slug,
   }));
+
+  return slugs || [];
 }
