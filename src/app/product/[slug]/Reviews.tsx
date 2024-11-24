@@ -1,48 +1,9 @@
-import { format, parseISO } from "date-fns";
+import { GetProductReviewsDocument } from '@/__generated__/graphql';
+import { getClient } from '@/lib/client';
+import { Typography } from '@mui/material';
 
-import {
-  GetProductReviewsDocument,
-  GetProductReviewsQuery,
-} from "@/__generated__/graphql";
-import { getClient } from "@/lib/client";
-import { Avatar, Rating, Stack, Typography } from "@mui/material";
-
-function getInitials(displayName?: string | null) {
-  return (
-    displayName
-      ?.match(/(\b\S)?/g)
-      ?.join("")
-      .match(/(^\S|\S$)?/g)
-      ?.join("")
-      .toUpperCase() || "?"
-  );
-}
-
-type Review = NonNullable<
-  GetProductReviewsQuery["getProductReviews"]["reviewList"][0]
->;
-
-interface ReviewProps {
-  review: Review;
-}
-
-function Review({ review }: ReviewProps) {
-  return (
-    <>
-      <Stack direction={"row"} spacing={1}>
-        <Avatar>{getInitials(review.user?.displayName)}</Avatar>
-        <Stack direction={"column"}>
-          <Typography variant="body2">{`Reviewed by ${review.user?.displayName}`}</Typography>
-          <Typography variant="body2">
-            {format(parseISO(review.createdAt), "PPPpp")}
-          </Typography>
-        </Stack>
-      </Stack>
-      <Rating name="product-rating" readOnly value={review.rating} />
-      <Typography variant="body1">{review.review}</Typography>
-    </>
-  );
-}
+import { Review } from './Review';
+import { ReviewOverview } from './ReviewOverview';
 
 interface ReviewsProps {
   productId?: string;
@@ -57,12 +18,15 @@ export default async function Reviews({ productId }: ReviewsProps) {
     variables: { productId },
   });
 
-  const reviews = data.getProductReviews.reviewList;
+  const { reviewList: reviews, pageInfo: summary } = data.getProductReviews;
   return (
     <>
-      {reviews.map((review) => (
-        <Review key={review.id} review={review} />
-      ))}
+      <Typography variant="h5">Customer reviews</Typography>
+      <ReviewOverview
+        averageRating={summary.avgRating}
+        totalReviews={summary.totalReviews}
+      />
+      {...reviews.map((review) => <Review key={review.id} review={review} />)}
     </>
   );
 }
