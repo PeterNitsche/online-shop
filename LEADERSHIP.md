@@ -117,18 +117,31 @@ The estimations of each tasks contain the effort to implement, review, test and 
 | Implement product detail page            | 4                         |
 | Implement "add review" feature           | 2                         |
 | Implement pagination (product + reviews) | 4                         |
-| Implement authentication                 | 3                         |
+| Implement authentication                 | 5                         |
 
 ### Tasks dependencies
 
 ```mermaid
-graph LR
-    A[Initialize project] -->B[Implement product grid page]
-    A --> C[Implement product grid page]
+flowchart LR
+    A[Initialize project] --> C[Implement product grid page]
     A --> D[Implement product detail page]
     A --> E[Implement authentication]
     C --> F[Implement product search]
     D --> G[Implement 'add review' feature]
     D --> H[Implement pagination]
     C --> H
+    E --> G
 ```
+
+### Timeline and milestones
+
+The product management need to define the scope of the MVP which is the first official milestone of the project.
+
+Assumptions:
+
+- We have minimum 3 full-time developers
+- The developers can work 80 % of their time on development
+- The critical path of this project takes 11 days.
+- I add an additional day as buffer for unforeseeable events
+
+Result: The project can be delivered within 2 weeks (10 work days).
