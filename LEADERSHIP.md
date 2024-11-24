@@ -129,6 +129,6 @@ graph LR
     A --> E[Implement authentication]
     C --> F[Implement product search]
     D --> G[Implement 'add review' feature]
-    D --> G[Implement pagination]
-    A --> G
+    D --> H[Implement pagination]
+    C --> H
 ```
