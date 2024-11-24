@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import { Box, Tab, Tabs } from "@mui/material";
+import { Box, Tab, Tabs } from '@mui/material';
 
 const tabItems = ["Description", "Reviews"] as const;
 type TabItemsType = (typeof tabItems)[number];
@@ -28,7 +28,7 @@ export default function TabBar({
   return (
     <>
       <Box
-        sx={{ borderBottom: 1, borderColor: "divider", marginBottom: "5px" }}
+        sx={{ borderBottom: 3, borderColor: "divider", marginBottom: "6px" }}
       >
         <Tabs
           value={value}
