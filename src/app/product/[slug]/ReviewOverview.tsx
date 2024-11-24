@@ -1,4 +1,4 @@
-import { Rating, Stack, Typography } from '@mui/material';
+import { Rating, Stack, Typography } from "@mui/material";
 
 interface ReviewOverviewProps {
   totalReviews?: number | null;
@@ -10,7 +10,7 @@ export function ReviewOverview({
   averageRating,
 }: ReviewOverviewProps) {
   return (
-    <>
+    <Stack>
       <Stack direction="row" spacing={2} alignItems="center">
         <Typography variant="subtitle1"> {`${averageRating} / 5`}</Typography>
         <Rating name="product-rating-summary" readOnly value={averageRating} />
@@ -18,6 +18,6 @@ export function ReviewOverview({
       <Typography variant="caption">
         {`${totalReviews} ratings and reviews`}
       </Typography>
-    </>
+    </Stack>
   );
 }
