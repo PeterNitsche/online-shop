@@ -8,12 +8,17 @@ import Carousel from "react-multi-carousel";
 import theme from "@/theme";
 import { Box } from "@mui/material";
 
-interface ImageCarouselProps {
+interface MediaCarouselProps {
+  videoUrl?: string | null;
   imageUrls: string[];
   productTitle?: string | null;
 }
 
-export function ImageCarousel({ imageUrls, productTitle }: ImageCarouselProps) {
+export function MediaCarousel({
+  videoUrl,
+  imageUrls,
+  productTitle,
+}: MediaCarouselProps) {
   const responsive = {
     all: {
       breakpoint: { max: 3000, min: 0 },
@@ -34,6 +39,19 @@ export function ImageCarousel({ imageUrls, productTitle }: ImageCarouselProps) {
           />
         </Box>
       ))}
+      {videoUrl && (
+        <Box
+          key={videoUrl}
+          height={500}
+          position="relative"
+          justifyContent={"center"}
+          display={"flex"}
+        >
+          <video key={videoUrl} controls width={"auto"} height={"100%"}>
+            <source src={videoUrl} type="video/mp4" />
+          </video>
+        </Box>
+      )}
     </Carousel>
   );
 }

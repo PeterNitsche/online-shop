@@ -1,7 +1,7 @@
-import { format, parseISO } from 'date-fns';
+import { format, parseISO } from "date-fns";
 
-import { GetProductReviewsQuery } from '@/__generated__/graphql';
-import { Avatar, Rating, Stack, Typography } from '@mui/material';
+import { GetProductReviewsQuery } from "@/__generated__/graphql";
+import { Avatar, Rating, Stack, Typography } from "@mui/material";
 
 function getInitials(displayName?: string | null) {
   return (
