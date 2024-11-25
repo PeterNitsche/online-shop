@@ -12,7 +12,7 @@ describe("TabBar", () => {
       <TabBar
         descriptionComponent={descriptionComponent}
         reviewsComponent={reviewComponent}
-      />
+      />,
     );
   }
 

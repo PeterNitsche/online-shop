@@ -1,4 +1,4 @@
-import { Rating, Stack, Typography } from '@mui/material';
+import { Rating, Stack, Typography } from "@mui/material";
 
 interface ReviewOverviewProps {
   totalReviews?: number | null;

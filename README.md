@@ -20,6 +20,14 @@ To run test automation, please execute:
 npm run test
 ```
 
+## Formatting
+
+To format the codebase, please execute:
+
+```bash
+npm run format
+```
+
 ## Generate GraphQL code
 
 To update the type declaration of your GraphQL queries, execute:

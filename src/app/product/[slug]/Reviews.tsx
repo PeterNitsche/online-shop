@@ -1,9 +1,9 @@
-import { GetProductReviewsDocument } from '@/__generated__/graphql';
-import { getClient } from '@/lib/client';
-import { Divider, Grid2 as Grid, Stack, Typography } from '@mui/material';
+import { GetProductReviewsDocument } from "@/__generated__/graphql";
+import { getClient } from "@/lib/client";
+import { Divider, Grid2 as Grid, Stack, Typography } from "@mui/material";
 
-import { Review } from './Review';
-import { ReviewOverview } from './ReviewOverview';
+import { Review } from "./Review";
+import { ReviewOverview } from "./ReviewOverview";
 
 interface ReviewsProps {
   productId?: string;

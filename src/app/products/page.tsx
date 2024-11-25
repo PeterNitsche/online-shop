@@ -1,12 +1,14 @@
-import { getFragmentData } from '@/__generated__';
+import { getFragmentData } from "@/__generated__";
 import {
-    GetProductsDocument, GetSearchProductsDocument, ProductListItemFragmentDoc
-} from '@/__generated__/graphql';
-import { getClient } from '@/lib/client';
-import { Grid2 as Grid, Stack } from '@mui/material';
+  GetProductsDocument,
+  GetSearchProductsDocument,
+  ProductListItemFragmentDoc,
+} from "@/__generated__/graphql";
+import { getClient } from "@/lib/client";
+import { Grid2 as Grid, Stack } from "@mui/material";
 
-import { Product } from './Product';
-import { SearchInput } from './SearchInput';
+import { Product } from "./Product";
+import { SearchInput } from "./SearchInput";
 
 interface ProductsProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;

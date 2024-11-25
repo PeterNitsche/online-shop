@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 
-import { Box, Tab, Tabs } from '@mui/material';
+import { Box, Tab, Tabs } from "@mui/material";
 
 const tabItems = ["Description", "Reviews"] as const;
 type TabItemsType = (typeof tabItems)[number];
@@ -20,7 +20,7 @@ export default function TabBar({
 
   const handleChange = (
     event: React.SyntheticEvent,
-    newValue: TabItemsType
+    newValue: TabItemsType,
   ) => {
     setValue(newValue);
   };

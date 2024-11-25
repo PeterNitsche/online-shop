@@ -1,12 +1,12 @@
 "use client";
 
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useState } from 'react';
-import { useDebouncedCallback } from 'use-debounce';
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
+import { useDebouncedCallback } from "use-debounce";
 
-import ClearIcon from '@mui/icons-material/Clear';
-import SearchIcon from '@mui/icons-material/Search';
-import { IconButton, InputAdornment, TextField } from '@mui/material';
+import ClearIcon from "@mui/icons-material/Clear";
+import SearchIcon from "@mui/icons-material/Search";
+import { IconButton, InputAdornment, TextField } from "@mui/material";
 
 export function SearchInput() {
   const searchParams = useSearchParams();
@@ -14,7 +14,7 @@ export function SearchInput() {
   const { replace } = useRouter();
 
   const [searchValue, setSearchValue] = useState(
-    searchParams.get("query") || ""
+    searchParams.get("query") || "",
   );
 
   const handleSearch = useDebouncedCallback((term: string) => {
