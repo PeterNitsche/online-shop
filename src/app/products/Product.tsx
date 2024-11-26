@@ -1,17 +1,10 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
 
-import { ProductListItemFragment } from "@/__generated__/graphql";
+import { ProductListItemFragment } from '@/__generated__/graphql';
 import {
-  Box,
-  Card,
-  CardActionArea,
-  CardContent,
-  Grid2 as Grid,
-  Rating,
-  Stack,
-  Typography,
-} from "@mui/material";
+    Box, Card, CardActionArea, CardContent, Grid2 as Grid, Rating, Stack, Typography
+} from '@mui/material';
 
 interface ProductProps {
   product: ProductListItemFragment;
@@ -29,6 +22,7 @@ export function Product({ product }: ProductProps) {
                   <Image
                     src={product.images[0].secure_url!}
                     fill
+                    priority
                     style={{ objectFit: "contain" }}
                     alt={product.title || "Product"}
                   />

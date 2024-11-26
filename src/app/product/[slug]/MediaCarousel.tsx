@@ -1,12 +1,12 @@
 "use client";
 
-import "react-multi-carousel/lib/styles.css";
+import 'react-multi-carousel/lib/styles.css';
 
-import Image from "next/image";
-import Carousel from "react-multi-carousel";
+import Image from 'next/image';
+import Carousel from 'react-multi-carousel';
 
-import theme from "@/theme";
-import { Box } from "@mui/material";
+import theme from '@/theme';
+import { Box } from '@mui/material';
 
 interface MediaCarouselProps {
   videoUrl?: string | null;
@@ -33,6 +33,7 @@ export function MediaCarousel({
           <Image
             src={imageUrl}
             fill
+            priority={i === 0}
             style={{ objectFit: "contain" }}
             alt={`${productTitle || "Product"} Image ${i}`}
             sizes={`${theme.breakpoints.values.lg}`}
