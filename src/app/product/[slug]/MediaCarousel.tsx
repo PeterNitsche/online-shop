@@ -1,12 +1,12 @@
 "use client";
 
-import 'react-multi-carousel/lib/styles.css';
+import "react-multi-carousel/lib/styles.css";
 
-import Image from 'next/image';
-import Carousel from 'react-multi-carousel';
+import Image from "next/image";
+import Carousel from "react-multi-carousel";
 
-import theme from '@/theme';
-import { Box } from '@mui/material';
+import theme from "@/theme";
+import { Box } from "@mui/material";
 
 interface MediaCarouselProps {
   videoUrl?: string | null;

@@ -18,6 +18,8 @@ const documents = {
     types.GetProductSlugsDocument,
   "query GetProducts {\n  getLandingProducts {\n    products {\n      ...ProductListItem\n    }\n  }\n}\n\nquery GetSearchProducts($term: String!) {\n  searchHomeProducts(search: $term) {\n    ...ProductListItem\n  }\n}\n\nfragment ProductListItem on Product {\n  id\n  slug\n  title\n  price\n  currency\n  averageRating\n  images {\n    public_id\n    secure_url\n  }\n}":
     types.GetProductsDocument,
+  "mutation Login($email: String!, $password: String!) {\n  userLogin(password: $password, email: $email) {\n    accessToken\n    authToken\n    user {\n      id\n    }\n  }\n}":
+    types.LoginDocument,
 };
 
 /**
@@ -46,6 +48,12 @@ export function gql(
 export function gql(
   source: "query GetProducts {\n  getLandingProducts {\n    products {\n      ...ProductListItem\n    }\n  }\n}\n\nquery GetSearchProducts($term: String!) {\n  searchHomeProducts(search: $term) {\n    ...ProductListItem\n  }\n}\n\nfragment ProductListItem on Product {\n  id\n  slug\n  title\n  price\n  currency\n  averageRating\n  images {\n    public_id\n    secure_url\n  }\n}",
 ): (typeof documents)["query GetProducts {\n  getLandingProducts {\n    products {\n      ...ProductListItem\n    }\n  }\n}\n\nquery GetSearchProducts($term: String!) {\n  searchHomeProducts(search: $term) {\n    ...ProductListItem\n  }\n}\n\nfragment ProductListItem on Product {\n  id\n  slug\n  title\n  price\n  currency\n  averageRating\n  images {\n    public_id\n    secure_url\n  }\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(
+  source: "mutation Login($email: String!, $password: String!) {\n  userLogin(password: $password, email: $email) {\n    accessToken\n    authToken\n    user {\n      id\n    }\n  }\n}",
+): (typeof documents)["mutation Login($email: String!, $password: String!) {\n  userLogin(password: $password, email: $email) {\n    accessToken\n    authToken\n    user {\n      id\n    }\n  }\n}"];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};
