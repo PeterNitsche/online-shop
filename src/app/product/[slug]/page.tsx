@@ -65,6 +65,7 @@ export default async function Product({ params }: ProductProps) {
 export async function generateStaticParams() {
   const { data } = await getClient().query({
     query: GetProductSlugsDocument,
+    context: { skipAuthentication: true },
   });
 
   const slugs = data.getLandingProducts.products?.map((product) => ({
