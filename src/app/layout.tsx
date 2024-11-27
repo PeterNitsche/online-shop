@@ -3,7 +3,7 @@ import './globals.css';
 
 import { Roboto } from 'next/font/google';
 
-import { Container } from '@mui/material';
+import { Container, CssBaseline } from '@mui/material';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { ThemeProvider } from '@mui/material/styles';
 
@@ -31,6 +31,7 @@ export default function RootLayout({
       <body className={`${roboto.variable}`}>
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
+            <CssBaseline />
             <Container maxWidth="lg">{children}</Container>
           </ThemeProvider>
         </AppRouterCacheProvider>
