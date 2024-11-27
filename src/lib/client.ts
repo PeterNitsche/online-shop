@@ -6,7 +6,7 @@ import { registerApolloClient } from '@apollo/experimental-nextjs-app-support';
 
 export const { getClient } = registerApolloClient(() => {
   const authLink = setContext(async (_, { headers }) => {
-    const baseUrl = typeof window === 'undefined' ? process.env.NEXTAUTH_URL : '';
+    const baseUrl = typeof window === 'undefined' ? process.env.AUTH_URL : '';
 
     const res = await fetch(`${baseUrl}/api/auth/session`);
 
