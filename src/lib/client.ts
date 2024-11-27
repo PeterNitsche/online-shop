@@ -1,15 +1,36 @@
-import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
+import { Session } from 'next-auth';
+
+import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 import { registerApolloClient } from '@apollo/experimental-nextjs-app-support';
 
 export const { getClient } = registerApolloClient(() => {
+  const authLink = setContext(async (_, { headers }) => {
+    const baseUrl = typeof window === 'undefined' ? process.env.NEXTAUTH_URL_INTERNAL : '';
+
+    const res = await fetch(`${baseUrl}/api/auth/session`);
+
+    if (!res.ok) {
+      throw new Error('Error getting session');
+    }
+
+    const session: Session = await res.json();
+    console.log('Session', session);
+    return {
+      headers: {
+        ...headers,
+        accessToken: session?.user.accessToken || '',
+        authorization: session?.user.authToken || '',
+      },
+    };
+  });
+
+  const httpLink = createHttpLink({
+    uri: 'https://api-dev.shopi.co.ke/graphql',
+  });
+
   return new ApolloClient({
     cache: new InMemoryCache(),
-    link: new HttpLink({
-      // https://studio.apollographql.com/public/spacex-l4uc6p/
-      uri: 'https://api-dev.shopi.co.ke/graphql',
-      // you can disable result caching here if you want to
-      // (this does not work if you are rendering your page with `export const dynamic = "force-static"`)
-      // fetchOptions: { cache: "no-store" },
-    }),
+    link: authLink.concat(httpLink),
   });
 });
