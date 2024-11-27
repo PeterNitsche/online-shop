@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
@@ -21,6 +22,8 @@ interface AddReviewFormProps {
 export function AddReviewForm({ productId, reviewSubmitted }: AddReviewFormProps) {
   const [submissionSuccessful, setSubmissionSuccessful] = useState(false);
 
+  const router = useRouter();
+
   const {
     control,
     register,
@@ -35,7 +38,8 @@ export function AddReviewForm({ productId, reviewSubmitted }: AddReviewFormProps
       review,
     });
     setSubmissionSuccessful(true);
-    setTimeout(reviewSubmitted, 1000);
+    setTimeout(reviewSubmitted, 700);
+    router.refresh();
   }
 
   return (
