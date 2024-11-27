@@ -1,16 +1,13 @@
-import {
-  GetProductDocument,
-  GetProductSlugsDocument,
-} from "@/__generated__/graphql";
-import { getClient } from "@/lib/client";
-import CancelTwoToneIcon from "@mui/icons-material/CancelTwoTone";
-import CheckCircleTwoToneIcon from "@mui/icons-material/CheckCircleTwoTone";
-import SellTwoToneIcon from "@mui/icons-material/SellTwoTone";
-import { Stack, Typography } from "@mui/material";
+import { GetProductDocument, GetProductSlugsDocument } from '@/__generated__/graphql';
+import { getClient } from '@/lib/client';
+import CancelTwoToneIcon from '@mui/icons-material/CancelTwoTone';
+import CheckCircleTwoToneIcon from '@mui/icons-material/CheckCircleTwoTone';
+import SellTwoToneIcon from '@mui/icons-material/SellTwoTone';
+import { Stack, Typography } from '@mui/material';
 
-import { MediaCarousel } from "./MediaCarousel";
-import Reviews from "./Reviews";
-import TabBar from "./TabBar";
+import { MediaCarousel } from './MediaCarousel';
+import Reviews from './Reviews';
+import TabBar from './TabBar';
 
 interface ProductProps {
   params: Promise<{ slug: string }>;
@@ -37,9 +34,7 @@ export default async function Product({ params }: ProductProps) {
         productTitle={product.title}
       />
       {product.title && <Typography variant="h6">{product.title}</Typography>}
-      {product.brand && (
-        <Typography variant="subtitle1">{`By ${product.brand}`}</Typography>
-      )}
+      {product.brand && <Typography variant="subtitle1">{`By ${product.brand}`}</Typography>}
 
       {product.price && (
         <Stack direction="row" spacing={1} alignItems="center">

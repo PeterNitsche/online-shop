@@ -1,0 +1,4 @@
+#ignore artifacts
+.next
+.swc
+src/__generated__/

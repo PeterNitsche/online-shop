@@ -3,16 +3,16 @@
  * https://jestjs.io/docs/configuration
  */
 
-import type { Config } from "jest";
-import nextJest from "next/jest.js";
+import type { Config } from 'jest';
+import nextJest from 'next/jest.js';
 
 const createJestConfig = nextJest({
-  dir: "./",
+  dir: './',
 });
 const config: Config = {
   clearMocks: true,
-  coverageProvider: "v8",
-  testEnvironment: "jsdom",
+  coverageProvider: 'v8',
+  testEnvironment: 'jsdom',
 };
 
 export default createJestConfig(config);

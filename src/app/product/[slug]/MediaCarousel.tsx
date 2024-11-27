@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import "react-multi-carousel/lib/styles.css";
+import 'react-multi-carousel/lib/styles.css';
 
-import Image from "next/image";
-import Carousel from "react-multi-carousel";
+import Image from 'next/image';
+import Carousel from 'react-multi-carousel';
 
-import theme from "@/theme";
-import { Box } from "@mui/material";
+import theme from '@/theme';
+import { Box } from '@mui/material';
 
 interface MediaCarouselProps {
   videoUrl?: string | null;
@@ -14,11 +14,7 @@ interface MediaCarouselProps {
   productTitle?: string | null;
 }
 
-export function MediaCarousel({
-  videoUrl,
-  imageUrls,
-  productTitle,
-}: MediaCarouselProps) {
+export function MediaCarousel({ videoUrl, imageUrls, productTitle }: MediaCarouselProps) {
   const responsive = {
     all: {
       breakpoint: { max: 3000, min: 0 },
@@ -34,8 +30,8 @@ export function MediaCarousel({
             src={imageUrl}
             fill
             priority={i === 0}
-            style={{ objectFit: "contain" }}
-            alt={`${productTitle || "Product"} Image ${i}`}
+            style={{ objectFit: 'contain' }}
+            alt={`${productTitle || 'Product'} Image ${i}`}
             sizes={`${theme.breakpoints.values.lg}`}
           />
         </Box>
@@ -45,10 +41,10 @@ export function MediaCarousel({
           key={videoUrl}
           height={500}
           position="relative"
-          justifyContent={"center"}
-          display={"flex"}
+          justifyContent={'center'}
+          display={'flex'}
         >
-          <video key={videoUrl} controls width={"auto"} height={"100%"}>
+          <video key={videoUrl} controls width={'auto'} height={'100%'}>
             <source src={videoUrl} type="video/mp4" />
           </video>
         </Box>

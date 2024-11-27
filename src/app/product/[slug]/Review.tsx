@@ -1,22 +1,20 @@
-import { format, parseISO } from "date-fns";
+import { format, parseISO } from 'date-fns';
 
-import { GetProductReviewsQuery } from "@/__generated__/graphql";
-import { Avatar, Rating, Stack, Typography } from "@mui/material";
+import { GetProductReviewsQuery } from '@/__generated__/graphql';
+import { Avatar, Rating, Stack, Typography } from '@mui/material';
 
 function getInitials(displayName?: string | null) {
   return (
     displayName
       ?.match(/(\b\S)?/g)
-      ?.join("")
+      ?.join('')
       .match(/(^\S|\S$)?/g)
-      ?.join("")
-      .toUpperCase() || "?"
+      ?.join('')
+      .toUpperCase() || '?'
   );
 }
 
-type Review = NonNullable<
-  GetProductReviewsQuery["getProductReviews"]["reviewList"][0]
->;
+type Review = NonNullable<GetProductReviewsQuery['getProductReviews']['reviewList'][0]>;
 
 interface ReviewProps {
   review: Review;
@@ -29,9 +27,7 @@ export function Review({ review }: ReviewProps) {
         <Avatar>{getInitials(review.user?.displayName)}</Avatar>
         <Stack direction="column">
           <Typography variant="body2">{`Reviewed by ${review.user?.displayName}`}</Typography>
-          <Typography variant="body2">
-            {format(parseISO(review.createdAt), "PPPpp")}
-          </Typography>
+          <Typography variant="body2">{format(parseISO(review.createdAt), 'PPPpp')}</Typography>
         </Stack>
       </Stack>
       <Rating name="product-rating" readOnly value={review.rating} />

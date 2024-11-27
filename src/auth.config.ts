@@ -1,13 +1,13 @@
-import { NextAuthConfig } from "next-auth";
-import Credentials from "next-auth/providers/credentials";
+import { NextAuthConfig } from 'next-auth';
+import Credentials from 'next-auth/providers/credentials';
 
-import { LoginDocument } from "./__generated__/graphql";
-import { getClient } from "./lib/client";
+import { LoginDocument } from './__generated__/graphql';
+import { getClient } from './lib/client';
 
 export const authConfig = {
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
-      const isOnProductDetailPage = nextUrl.pathname.startsWith("/product/");
+      const isOnProductDetailPage = nextUrl.pathname.startsWith('/product/');
       return isOnProductDetailPage ? !!auth?.user : true;
     },
     async jwt({ token, user }) {
@@ -22,11 +22,11 @@ export const authConfig = {
   providers: [
     Credentials({
       credentials: {
-        email: { label: "Email", type: "text" },
-        password: { label: "Password", type: "password" },
+        email: { label: 'Email', type: 'text' },
+        password: { label: 'Password', type: 'password' },
       },
       async authorize({ email, password }) {
-        if (typeof email !== "string" || typeof password !== "string") {
+        if (typeof email !== 'string' || typeof password !== 'string') {
           return null;
         }
         const { data, errors } = await getClient().mutate({
