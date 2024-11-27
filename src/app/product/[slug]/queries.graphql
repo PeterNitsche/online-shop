@@ -1,11 +1,3 @@
-query GetProductSlugs {
-  getLandingProducts {
-    products {
-      slug
-    }
-  }
-}
-
 query GetProduct($slug: String!) {
   getProductBySlug(slug: $slug) {
     id

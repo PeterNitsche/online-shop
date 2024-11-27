@@ -12,5 +12,6 @@ export async function saveReview(params: AddProductReviewMutationVariables) {
     variables: {
       ...params,
     },
+    context: { useAuthentication: true },
   });
 }

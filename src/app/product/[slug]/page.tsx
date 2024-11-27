@@ -1,8 +1,4 @@
-import {
-  GetProductDocument,
-  GetProductReviewsDocument,
-  GetProductSlugsDocument,
-} from '@/__generated__/graphql';
+import { GetProductDocument, GetProductReviewsDocument } from '@/__generated__/graphql';
 import { getClient } from '@/lib/client';
 import CancelTwoToneIcon from '@mui/icons-material/CancelTwoTone';
 import CheckCircleTwoToneIcon from '@mui/icons-material/CheckCircleTwoTone';
@@ -80,17 +76,4 @@ export default async function Product({ params }: ProductProps) {
       />
     </>
   );
-}
-
-export async function generateStaticParams() {
-  const { data } = await getClient().query({
-    query: GetProductSlugsDocument,
-    context: { skipAuthentication: true },
-  });
-
-  const slugs = data.getLandingProducts.products?.map((product) => ({
-    slug: product.slug,
-  }));
-
-  return slugs || [];
 }

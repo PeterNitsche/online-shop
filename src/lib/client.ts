@@ -4,8 +4,8 @@ import { setContext } from '@apollo/client/link/context';
 import { registerApolloClient } from '@apollo/experimental-nextjs-app-support';
 
 export const { getClient } = registerApolloClient(() => {
-  const authLink = setContext(async (_, { headers, skipAuthentication }) => {
-    const session = skipAuthentication ? undefined : await auth();
+  const authLink = setContext(async (_, { headers }) => {
+    const session = await auth();
     return {
       headers: {
         ...headers,
