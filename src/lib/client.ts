@@ -6,7 +6,6 @@ import { registerApolloClient } from '@apollo/experimental-nextjs-app-support';
 export const { getClient } = registerApolloClient(() => {
   const authLink = setContext(async (_, { headers, skipAuthentication }) => {
     const session = skipAuthentication ? undefined : await auth();
-    console.log('Session', session);
     return {
       headers: {
         ...headers,
