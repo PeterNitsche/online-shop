@@ -1,4 +1,8 @@
-import { GetProductDocument, GetProductSlugsDocument } from '@/__generated__/graphql';
+import {
+  GetProductDocument,
+  GetProductReviewsDocument,
+  GetProductSlugsDocument,
+} from '@/__generated__/graphql';
 import { getClient } from '@/lib/client';
 import CancelTwoToneIcon from '@mui/icons-material/CancelTwoTone';
 import CheckCircleTwoToneIcon from '@mui/icons-material/CheckCircleTwoTone';
@@ -6,6 +10,7 @@ import SellTwoToneIcon from '@mui/icons-material/SellTwoTone';
 import { Stack, Typography } from '@mui/material';
 
 import { MediaCarousel } from './MediaCarousel';
+import { ReviewOverview } from './ReviewOverview';
 import Reviews from './Reviews';
 import TabBar from './TabBar';
 
@@ -15,12 +20,23 @@ interface ProductProps {
 
 export default async function Product({ params }: ProductProps) {
   const { slug } = await params;
-  const { data } = await getClient().query({
+  const { data: productData } = await getClient().query({
     query: GetProductDocument,
     variables: { slug },
   });
 
-  const product = data.getProductBySlug;
+  const product = productData.getProductBySlug;
+
+  if (!product.id) {
+    return undefined;
+  }
+
+  const { data: reviewData } = await getClient().query({
+    query: GetProductReviewsDocument,
+    variables: { productId: product.id },
+  });
+
+  const { reviewList: reviews, pageInfo: summary } = reviewData.getProductReviews;
 
   const imageUrls = product.images
     .map((image) => image.secure_url)
@@ -55,8 +71,12 @@ export default async function Product({ params }: ProductProps) {
         </Stack>
       )}
       <TabBar
+        productId={product.id}
         descriptionComponent={<Typography>{product.description}</Typography>}
-        reviewsComponent={<Reviews productId={product.id!} />}
+        reviewsComponent={<Reviews reviewList={reviews} />}
+        reviewOverviewComponent={
+          <ReviewOverview averageRating={summary.avgRating} totalReviews={summary.totalReviews} />
+        }
       />
     </>
   );

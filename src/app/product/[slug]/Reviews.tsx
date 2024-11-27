@@ -1,32 +1,18 @@
-import { GetProductReviewsDocument } from '@/__generated__/graphql';
-import { getClient } from '@/lib/client';
-import { Divider, Grid2 as Grid, Stack, Typography } from '@mui/material';
+import { GetProductReviewsQuery } from '@/__generated__/graphql';
+import { Grid2 as Grid, Stack, Typography } from '@mui/material';
 
 import { Review } from './Review';
-import { ReviewOverview } from './ReviewOverview';
 
+type ReviewList = GetProductReviewsQuery['getProductReviews']['reviewList'];
 interface ReviewsProps {
-  productId?: string;
+  reviewList: ReviewList;
 }
-export default async function Reviews({ productId }: ReviewsProps) {
-  if (!productId) {
-    return undefined;
-  }
-
-  const { data } = await getClient().query({
-    query: GetProductReviewsDocument,
-    variables: { productId },
-  });
-
-  const { reviewList: reviews, pageInfo: summary } = data.getProductReviews;
+export default async function Reviews({ reviewList }: ReviewsProps) {
   return (
     <Stack spacing={1}>
-      <Typography variant="h5">Customer reviews</Typography>
-      <ReviewOverview averageRating={summary.avgRating} totalReviews={summary.totalReviews} />
-      <Divider />
       <Typography variant="h5">All reviews</Typography>
       <Grid container spacing={4} columns={{ xs: 2, sm: 4, md: 6 }}>
-        {...reviews.map((review) => (
+        {...reviewList.map((review) => (
           <Grid key={review.id}>
             <Review review={review} />
           </Grid>

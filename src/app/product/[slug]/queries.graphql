@@ -45,3 +45,11 @@ query GetProductReviews($productId: String!, $cursor: String) {
     }
   }
 }
+
+mutation AddProductReview($productId: String!, $review: String!, $rating: Float!) {
+  addProductReview(
+    payload: { product: $productId, review: $review, rating: $rating, isImages: true }
+  ) {
+    id
+  }
+}

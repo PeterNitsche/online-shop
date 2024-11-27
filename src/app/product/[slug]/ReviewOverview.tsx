@@ -8,6 +8,7 @@ interface ReviewOverviewProps {
 export function ReviewOverview({ totalReviews, averageRating }: ReviewOverviewProps) {
   return (
     <Stack>
+      <Typography variant="h5">Customer reviews</Typography>
       <Stack direction="row" spacing={2} alignItems="center">
         <Typography variant="subtitle1"> {`${averageRating} / 5`}</Typography>
         <Rating

@@ -1,6 +1,6 @@
 /* eslint-disable */
-import * as types from "./graphql";
-import { TypedDocumentNode as DocumentNode } from "@graphql-typed-document-node/core";
+import * as types from './graphql';
+import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 
 /**
  * Map of all GraphQL operations in the project.
@@ -14,12 +14,9 @@ import { TypedDocumentNode as DocumentNode } from "@graphql-typed-document-node/
  * Learn more about it here: https://the-guild.dev/graphql/codegen/plugins/presets/preset-client#reducing-bundle-size
  */
 const documents = {
-  "query GetProductSlugs {\n  getLandingProducts {\n    products {\n      slug\n    }\n  }\n}\n\nquery GetProduct($slug: String!) {\n  getProductBySlug(slug: $slug) {\n    id\n    title\n    price\n    currency\n    brand\n    inStock\n    images {\n      public_id\n      secure_url\n    }\n    video {\n      public_id\n      secure_url\n    }\n    description\n  }\n}\n\nquery GetProductReviews($productId: String!, $cursor: String) {\n  getProductReviews(cursor: $cursor, productId: $productId) {\n    pageInfo {\n      endCursor\n      hasNextPage\n      avgRating\n      totalReviews\n    }\n    reviewList {\n      id\n      rating\n      review\n      createdAt\n      rating\n      user {\n        displayName\n      }\n    }\n  }\n}":
-    types.GetProductSlugsDocument,
-  "query GetProducts {\n  getLandingProducts {\n    products {\n      ...ProductListItem\n    }\n  }\n}\n\nquery GetSearchProducts($term: String!) {\n  searchHomeProducts(search: $term) {\n    ...ProductListItem\n  }\n}\n\nfragment ProductListItem on Product {\n  id\n  slug\n  title\n  price\n  currency\n  averageRating\n  images {\n    public_id\n    secure_url\n  }\n}":
-    types.GetProductsDocument,
-  "mutation Login($email: String!, $password: String!) {\n  userLogin(password: $password, email: $email) {\n    accessToken\n    authToken\n    user {\n      id\n    }\n  }\n}":
-    types.LoginDocument,
+    "query GetProductSlugs {\n  getLandingProducts {\n    products {\n      slug\n    }\n  }\n}\n\nquery GetProduct($slug: String!) {\n  getProductBySlug(slug: $slug) {\n    id\n    title\n    price\n    currency\n    brand\n    inStock\n    images {\n      public_id\n      secure_url\n    }\n    video {\n      public_id\n      secure_url\n    }\n    description\n  }\n}\n\nquery GetProductReviews($productId: String!, $cursor: String) {\n  getProductReviews(cursor: $cursor, productId: $productId) {\n    pageInfo {\n      endCursor\n      hasNextPage\n      avgRating\n      totalReviews\n    }\n    reviewList {\n      id\n      rating\n      review\n      createdAt\n      rating\n      user {\n        displayName\n      }\n    }\n  }\n}\n\nmutation AddProductReview($productId: String!, $review: String!, $rating: Float!) {\n  addProductReview(\n    payload: {product: $productId, review: $review, rating: $rating, isImages: true}\n  ) {\n    id\n  }\n}": types.GetProductSlugsDocument,
+    "query GetProducts {\n  getLandingProducts {\n    products {\n      ...ProductListItem\n    }\n  }\n}\n\nquery GetSearchProducts($term: String!) {\n  searchHomeProducts(search: $term) {\n    ...ProductListItem\n  }\n}\n\nfragment ProductListItem on Product {\n  id\n  slug\n  title\n  price\n  currency\n  averageRating\n  images {\n    public_id\n    secure_url\n  }\n}": types.GetProductsDocument,
+    "mutation Login($email: String!, $password: String!) {\n  userLogin(password: $password, email: $email) {\n    accessToken\n    authToken\n  }\n}": types.LoginDocument,
 };
 
 /**
@@ -39,25 +36,18 @@ export function gql(source: string): unknown;
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(
-  source: "query GetProductSlugs {\n  getLandingProducts {\n    products {\n      slug\n    }\n  }\n}\n\nquery GetProduct($slug: String!) {\n  getProductBySlug(slug: $slug) {\n    id\n    title\n    price\n    currency\n    brand\n    inStock\n    images {\n      public_id\n      secure_url\n    }\n    video {\n      public_id\n      secure_url\n    }\n    description\n  }\n}\n\nquery GetProductReviews($productId: String!, $cursor: String) {\n  getProductReviews(cursor: $cursor, productId: $productId) {\n    pageInfo {\n      endCursor\n      hasNextPage\n      avgRating\n      totalReviews\n    }\n    reviewList {\n      id\n      rating\n      review\n      createdAt\n      rating\n      user {\n        displayName\n      }\n    }\n  }\n}",
-): (typeof documents)["query GetProductSlugs {\n  getLandingProducts {\n    products {\n      slug\n    }\n  }\n}\n\nquery GetProduct($slug: String!) {\n  getProductBySlug(slug: $slug) {\n    id\n    title\n    price\n    currency\n    brand\n    inStock\n    images {\n      public_id\n      secure_url\n    }\n    video {\n      public_id\n      secure_url\n    }\n    description\n  }\n}\n\nquery GetProductReviews($productId: String!, $cursor: String) {\n  getProductReviews(cursor: $cursor, productId: $productId) {\n    pageInfo {\n      endCursor\n      hasNextPage\n      avgRating\n      totalReviews\n    }\n    reviewList {\n      id\n      rating\n      review\n      createdAt\n      rating\n      user {\n        displayName\n      }\n    }\n  }\n}"];
+export function gql(source: "query GetProductSlugs {\n  getLandingProducts {\n    products {\n      slug\n    }\n  }\n}\n\nquery GetProduct($slug: String!) {\n  getProductBySlug(slug: $slug) {\n    id\n    title\n    price\n    currency\n    brand\n    inStock\n    images {\n      public_id\n      secure_url\n    }\n    video {\n      public_id\n      secure_url\n    }\n    description\n  }\n}\n\nquery GetProductReviews($productId: String!, $cursor: String) {\n  getProductReviews(cursor: $cursor, productId: $productId) {\n    pageInfo {\n      endCursor\n      hasNextPage\n      avgRating\n      totalReviews\n    }\n    reviewList {\n      id\n      rating\n      review\n      createdAt\n      rating\n      user {\n        displayName\n      }\n    }\n  }\n}\n\nmutation AddProductReview($productId: String!, $review: String!, $rating: Float!) {\n  addProductReview(\n    payload: {product: $productId, review: $review, rating: $rating, isImages: true}\n  ) {\n    id\n  }\n}"): (typeof documents)["query GetProductSlugs {\n  getLandingProducts {\n    products {\n      slug\n    }\n  }\n}\n\nquery GetProduct($slug: String!) {\n  getProductBySlug(slug: $slug) {\n    id\n    title\n    price\n    currency\n    brand\n    inStock\n    images {\n      public_id\n      secure_url\n    }\n    video {\n      public_id\n      secure_url\n    }\n    description\n  }\n}\n\nquery GetProductReviews($productId: String!, $cursor: String) {\n  getProductReviews(cursor: $cursor, productId: $productId) {\n    pageInfo {\n      endCursor\n      hasNextPage\n      avgRating\n      totalReviews\n    }\n    reviewList {\n      id\n      rating\n      review\n      createdAt\n      rating\n      user {\n        displayName\n      }\n    }\n  }\n}\n\nmutation AddProductReview($productId: String!, $review: String!, $rating: Float!) {\n  addProductReview(\n    payload: {product: $productId, review: $review, rating: $rating, isImages: true}\n  ) {\n    id\n  }\n}"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(
-  source: "query GetProducts {\n  getLandingProducts {\n    products {\n      ...ProductListItem\n    }\n  }\n}\n\nquery GetSearchProducts($term: String!) {\n  searchHomeProducts(search: $term) {\n    ...ProductListItem\n  }\n}\n\nfragment ProductListItem on Product {\n  id\n  slug\n  title\n  price\n  currency\n  averageRating\n  images {\n    public_id\n    secure_url\n  }\n}",
-): (typeof documents)["query GetProducts {\n  getLandingProducts {\n    products {\n      ...ProductListItem\n    }\n  }\n}\n\nquery GetSearchProducts($term: String!) {\n  searchHomeProducts(search: $term) {\n    ...ProductListItem\n  }\n}\n\nfragment ProductListItem on Product {\n  id\n  slug\n  title\n  price\n  currency\n  averageRating\n  images {\n    public_id\n    secure_url\n  }\n}"];
+export function gql(source: "query GetProducts {\n  getLandingProducts {\n    products {\n      ...ProductListItem\n    }\n  }\n}\n\nquery GetSearchProducts($term: String!) {\n  searchHomeProducts(search: $term) {\n    ...ProductListItem\n  }\n}\n\nfragment ProductListItem on Product {\n  id\n  slug\n  title\n  price\n  currency\n  averageRating\n  images {\n    public_id\n    secure_url\n  }\n}"): (typeof documents)["query GetProducts {\n  getLandingProducts {\n    products {\n      ...ProductListItem\n    }\n  }\n}\n\nquery GetSearchProducts($term: String!) {\n  searchHomeProducts(search: $term) {\n    ...ProductListItem\n  }\n}\n\nfragment ProductListItem on Product {\n  id\n  slug\n  title\n  price\n  currency\n  averageRating\n  images {\n    public_id\n    secure_url\n  }\n}"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(
-  source: "mutation Login($email: String!, $password: String!) {\n  userLogin(password: $password, email: $email) {\n    accessToken\n    authToken\n    user {\n      id\n    }\n  }\n}",
-): (typeof documents)["mutation Login($email: String!, $password: String!) {\n  userLogin(password: $password, email: $email) {\n    accessToken\n    authToken\n    user {\n      id\n    }\n  }\n}"];
+export function gql(source: "mutation Login($email: String!, $password: String!) {\n  userLogin(password: $password, email: $email) {\n    accessToken\n    authToken\n  }\n}"): (typeof documents)["mutation Login($email: String!, $password: String!) {\n  userLogin(password: $password, email: $email) {\n    accessToken\n    authToken\n  }\n}"];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};
 }
 
-export type DocumentType<TDocumentNode extends DocumentNode<any, any>> =
-  TDocumentNode extends DocumentNode<infer TType, any> ? TType : never;
+export type DocumentType<TDocumentNode extends DocumentNode<any, any>> = TDocumentNode extends DocumentNode<  infer TType,  any>  ? TType  : never;

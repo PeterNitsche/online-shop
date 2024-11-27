@@ -1,6 +1,8 @@
 import { getFragmentData } from '@/__generated__';
 import {
-    GetProductsDocument, GetSearchProductsDocument, ProductListItemFragmentDoc
+  GetProductsDocument,
+  GetSearchProductsDocument,
+  ProductListItemFragmentDoc,
 } from '@/__generated__/graphql';
 import { getClient } from '@/lib/client';
 import { Grid2 as Grid, Stack } from '@mui/material';
