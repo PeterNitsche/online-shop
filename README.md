@@ -2,16 +2,24 @@
 
 This is a sample online shop project hosted on Vercel: https://online-shop-phi-six.vercel.app/
 
-## Env
+## Environment
 
-Please create an .env file with a variable "AUTH_SECRET". It will be used locally to encode session tokens.
+Please create an .env file with the following variables:
+
+### AUTH_SECRET
+
+It will be used locally to encode session tokens.
 A secret can be generated using the following command.
 
 ```bash
 openssl rand -base64 32
 ```
 
-Please set it as value of the variable.
+Please set the generated secret as value of the variable.
+
+### AUTH_URL
+
+The variable is used by next-auth. Please set it to `http://localhost:3000`.
 
 ## Run locally
 
