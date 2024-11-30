@@ -10,7 +10,7 @@ export function ReviewOverview({ totalReviews, averageRating }: ReviewOverviewPr
     <Stack>
       <Typography variant="h5">Customer reviews</Typography>
       <Stack direction="row" spacing={2} alignItems="center">
-        <Typography variant="subtitle1"> {`${averageRating} / 5`}</Typography>
+        <Typography variant="subtitle1"> {`${averageRating || '?'} / 5`}</Typography>
         <Rating
           name="product-rating-summary"
           disabled={!totalReviews}
@@ -18,7 +18,9 @@ export function ReviewOverview({ totalReviews, averageRating }: ReviewOverviewPr
           value={averageRating}
         />
       </Stack>
-      <Typography variant="caption">{`${totalReviews} ratings and reviews`}</Typography>
+      <Typography variant="caption">
+        {totalReviews ? `${totalReviews} ratings and reviews` : 'no reviews yet'}
+      </Typography>
     </Stack>
   );
 }
