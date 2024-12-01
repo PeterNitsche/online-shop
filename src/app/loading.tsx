@@ -5,11 +5,10 @@ export default function Loading() {
   return (
     <Box
       sx={{
+        height: '100vh',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '100vh',
-        width: '100vw',
       }}
     >
       <CircularProgress />
